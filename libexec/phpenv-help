@@ -3,18 +3,18 @@ set -e
 [ -n "$PHPENV_DEBUG" ] && set -x
 
 print_set_version() {
-  echo "<version> should be a string matching a Ruby version known by phpenv."
+  echo "<version> should be a string matching a PHP version known by phpenv."
 
   local versions="$(phpenv-versions --bare)"
   if [ -z "$versions" ]; then
-    echo "There are currently no Ruby versions installed for phpenv."
+    echo "There are currently no PHP versions installed for phpenv."
   else
-    echo "The currently installed Ruby versions are:"
+    echo "The currently installed PHP versions are:"
     echo "$versions" | sed 's/^/  /'
   fi
 
   echo
-  echo "The special version string 'system' will use your default system Ruby."
+  echo "The special version string 'system' will use your default system PHP."
 }
 
 case "$1" in
@@ -23,13 +23,13 @@ case "$1" in
 Some useful phpenv commands are:
    commands      List all phpenv commands
    rehash        Rehash phpenv shims (run this after installing binaries)
-   global        Set or show the global Ruby version
-   local         Set or show the local directory-specific Ruby version
-   shell         Set or show the shell-specific Ruby version
-   version       Show the current Ruby version
-   versions      List all Ruby versions known by phpenv
-   which         Show the full path for the given Ruby command
-   whence        List all Ruby versions with the given command
+   global        Set or show the global PHP version
+   local         Set or show the local directory-specific PHP version
+   shell         Set or show the shell-specific PHP version
+   version       Show the current PHP version
+   versions      List all PHP versions known by phpenv
+   which         Show the full path for the given PHP command
+   whence        List all PHP versions with the given command
 
 See 'phpenv help <command>' for information on a specific command.
 For full documentation, see: https://github.com/sstephenson/phpenv#readme"
@@ -42,7 +42,7 @@ List all phpenv commands."
 ;;
 global) echo "usage: phpenv global <version>
 
-Sets the global Ruby version. You can override the global version at
+Sets the global PHP version. You can override the global version at
 any time by setting a directory-specific version with \`phpenv local'
 or by setting the PHPENV_VERSION environment variable.
 
@@ -51,12 +51,12 @@ $(print_set_version)"
 local) echo "usage: phpenv local <version>
        phpenv local --unset
 
-Sets the local directory-specific Ruby version by writing the version
+Sets the local directory-specific PHP version by writing the version
 name to a file named '.phpenv-version'.
 
-When you run a Ruby command, phpenv will look for an '.phpenv-version'
+When you run a PHP command, phpenv will look for an '.phpenv-version'
 file in the current directory and each parent directory. If no such
-file is found in the tree, phpenv will use the global Ruby version
+file is found in the tree, phpenv will use the global PHP version
 specified with \`phpenv global', or the version specified in the
 PHPENV_VERSION environment variable.
 
@@ -65,7 +65,7 @@ $(print_set_version)"
 shell) echo "usage: phpenv shell <version>
        phpenv shell --unset
 
-Sets a shell-specific Ruby version by setting the 'PHPENV_VERSION'
+Sets a shell-specific PHP version by setting the 'PHPENV_VERSION'
 environment variable in your shell. This version overrides both
 project-specific versions and the global version.
 
@@ -74,7 +74,7 @@ $(print_set_version)"
 versions) echo "usage: phpenv versions
        phpenv versions --bare
 
-Lists all Ruby versions known by phpenv."
+Lists all PHP versions known by phpenv."
 ;;
 which) echo "usage: phpenv which <command>
 
@@ -83,7 +83,7 @@ run the given command."
 ;;
 whence) echo "usage: phpenv whence <command>
 
-Lists all Ruby versions with the given command installed."
+Lists all PHP versions with the given command installed."
 ;;
 *)
   command_path="$(command -v "phpenv-$1" || true)"
