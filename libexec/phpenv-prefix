@@ -15,8 +15,8 @@ elif [ -z "$PHPENV_VERSION" ]; then
 fi
 
 if [ "$PHPENV_VERSION" = "system" ]; then
-  RUBY_PATH="$(phpenv-which ruby)"
-  echo "${RUBY_PATH%/*}"
+  PHP_PATH="$(phpenv-which php)"
+  echo "${PHP_PATH%/*}"
   exit
 fi
 
